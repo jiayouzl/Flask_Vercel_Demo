@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 
 class VercelEdgeConfig:
     def __init__(self):
-        # load_dotenv()  # 从.env文件中加载环境变量(本地测试时使用)
+        load_dotenv()  # 从.env文件中加载环境变量(本地测试时使用)
         self.base_url = "https://api.vercel.com/v1/edge-config"
         self.token = os.environ.get("VERCEL_API_TOKEN")
         self.config_id = os.environ.get("VERCEL_CONFIG_ID")
