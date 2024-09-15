@@ -6,7 +6,8 @@ import sys
 
 import requests
 from flask import Flask, jsonify, render_template, request
-from vercel_ect_api import VercelEdgeConfig
+
+from api.vercel_ect_api import VercelEdgeConfig
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 app = Flask(__name__)
