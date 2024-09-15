@@ -12,5 +12,10 @@
             "src": "/(.*)",
             "dest": "/api/app.py"
         }
+    ],
+    "env": [
+        {
+            "PYTHONPATH": "."
+        }
     ]
 }

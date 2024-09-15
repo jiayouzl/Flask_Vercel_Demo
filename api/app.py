@@ -4,12 +4,7 @@ import asyncio
 
 import requests
 from flask import Flask, jsonify, render_template, request
-
-# 条件导入
-try:
-    from vercel_ect_api import VercelEdgeConfig
-except ImportError:
-    from api.vercel_ect_api import VercelEdgeConfig
+from vercel_ect_api import VercelEdgeConfig
 
 app = Flask(__name__)
 edge_config = VercelEdgeConfig()
