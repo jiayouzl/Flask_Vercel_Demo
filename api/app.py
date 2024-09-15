@@ -15,36 +15,6 @@ app = Flask(__name__)
 edge_config = VercelEdgeConfig()
 
 
-# http://127.0.0.1:5001/set/name/zhanglei
-@app.route("/set/<key>/<value>")
-def set_value(key, value):
-    result = asyncio.run(edge_config.set(key, value))
-    return "Success" if result else "Failed"
-
-
-# http://127.0.0.1:5001/get/name
-@app.route("/get/<key>")
-def get_value(key):
-    value = asyncio.run(edge_config.get(key))
-    if value is None:
-        return f"Key '{key}' not found", 404
-    return str(value)
-
-
-# http://127.0.0.1:5001/delete/greeting
-@app.route("/delete/<key>")
-def delete_value(key):
-    result = asyncio.run(edge_config.delete(key))
-    return "Success" if result else "Failed"
-
-
-# http://127.0.0.1:5001/list_items
-@app.route("/list_items")
-def list_items():
-    items = asyncio.run(edge_config.list_items())
-    return jsonify(items)
-
-
 # http://127.0.0.1:5001
 @app.route("/", methods=["GET"])
 def index():
@@ -78,6 +48,36 @@ def get_ip_parse():
 
     response = requests.get("http://whois.pconline.com.cn/ipJson.jsp", params=params, headers=headers, verify=False).json()
     return jsonify({"ip": response["ip"], "city": response["city"], "addr": response["addr"]})
+
+
+# http://127.0.0.1:5001/set/name/zhanglei
+@app.route("/set/<key>/<value>")
+def set_value(key, value):
+    result = asyncio.run(edge_config.set(key, value))
+    return "Success" if result else "Failed"
+
+
+# http://127.0.0.1:5001/get/name
+@app.route("/get/<key>")
+def get_value(key):
+    value = asyncio.run(edge_config.get(key))
+    if value is None:
+        return f"Key '{key}' not found", 404
+    return str(value)
+
+
+# http://127.0.0.1:5001/delete/greeting
+@app.route("/delete/<key>")
+def delete_value(key):
+    result = asyncio.run(edge_config.delete(key))
+    return "Success" if result else "Failed"
+
+
+# http://127.0.0.1:5001/list_items
+@app.route("/list_items")
+def list_items():
+    items = asyncio.run(edge_config.list_items())
+    return jsonify(items)
 
 
 if __name__ == "__main__":
