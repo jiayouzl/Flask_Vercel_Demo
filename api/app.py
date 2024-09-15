@@ -2,9 +2,12 @@
 
 import asyncio
 import os
+import sys
 
 import requests
 from flask import Flask, jsonify, render_template, request
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from vercel_ect_api import VercelEdgeConfig
 
 app = Flask(__name__)
