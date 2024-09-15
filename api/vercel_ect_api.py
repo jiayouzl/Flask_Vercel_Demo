@@ -3,7 +3,7 @@
 # 基于Vercel Edge Config API的Python3客户端
 # 1. 创建https://vercel.com/jiayouzls-projects/~/stores 创建一个Edge Config(然后需要再Projects中关联项目)
 # 2. 创建https://vercel.com/account/settings/tokens 创建一个全局的Token
-# 3. KV_REST_API_TOKEN = 全局Token
+# 3. VERCEL_API_TOKEN = 全局Token
 # 4. VERCEL_CONFIG_ID = Edge Config的ID 在刚创建的Edge Config的URL中可以找到(名称为：ID)
 # 5. 在https://vercel.com/jiayouzls-projects/flask-vercel-demo/settings/environment-variables 中设置好环境变量
 
@@ -17,11 +17,11 @@ class VercelEdgeConfig:
     def __init__(self):
         # load_dotenv()  # 从.env文件中加载环境变量(本地测试时使用)
         self.base_url = "https://api.vercel.com/v1/edge-config"
-        self.token = os.environ.get("KV_REST_API_TOKEN")
+        self.token = os.environ.get("VERCEL_API_TOKEN")
         self.config_id = os.environ.get("VERCEL_CONFIG_ID")
 
         if not self.token or not self.config_id:
-            raise ValueError("KV_REST_API_TOKEN 和 VERCEL_CONFIG_ID 必须要在VERCEL环境变量中设置")
+            raise ValueError("VERCEL_API_TOKEN 和 VERCEL_CONFIG_ID 必须要在VERCEL环境变量中设置")
 
     async def set(self, key, value):
         url = f"{self.base_url}/{self.config_id}/items"
