@@ -2,7 +2,7 @@
 
 from flask import Flask, jsonify, render_template, request
 
-app = Flask(__name__)  # 创建一个Flask对象，传递__name__参数
+app = Flask(__name__)
 
 
 # http://127.0.0.1:5001
