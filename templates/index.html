@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEMO</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button[name='test']").click(function () {
+                alert("Hello World!");
+            });
+
+            $("button[name='ajax1']").click(function () {
+                $.ajax({
+                    url: "/api",
+                    type: "GET",
+                    success: function (data) {
+                        alert(data.error);
+                    }
+                });
+            });
+
+            $("button[name='ajax2']").click(function () {
+                $.ajax({
+                    url: "/api",
+                    type: "GET",
+                    data: {
+                        "name": "Flask_Vercel_Demo"
+                    },
+                    success: function (data) {
+                        alert(data.name);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>这是一个Flask_Vercel_Demo</h1>
+    <button type="button" name="test">点我弹窗</button>
+
+    <div style="margin-top: 5px;">
+        <button type="button" name="ajax1">测试服务端接口返回值1</button>
+        <button type="button" name="ajax2">测试服务端接口返回值2</button>
+    </div>
+
+    <div style="margin-top: 5px;">
+        <a href="/api" target="_blank">点击这里访问服务端接口1</a>
+        <a href="/api?name=hello" target="_blank">点击这里访问服务端接口2</a>
+    </div>
+</body>
+
+</html>
