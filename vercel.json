@@ -13,9 +13,7 @@
             "dest": "/api/app.py"
         }
     ],
-    "env": [
-        {
-            "PYTHONPATH": "."
-        }
-    ]
+    "env": {
+        "PYTHONPATH": "/api"
+    }
 }
