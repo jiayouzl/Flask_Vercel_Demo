@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 import asyncio
+import os
 
 import requests
 from flask import Flask, jsonify, render_template, request
@@ -14,6 +15,12 @@ edge_config = VercelEdgeConfig()
 @app.route("/", methods=["GET"])
 def index():
     return render_template("index.html")
+
+
+# http://127.0.0.1:5001/getenv
+@app.route("/getenv", methods=["GET"])
+def getenv():
+    return jsonify({"ECHOTEST": os.environ.get("ECHOTEST")})
 
 
 # http://127.0.0.1:5001/api
