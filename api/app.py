@@ -4,7 +4,12 @@ import asyncio
 
 import requests
 from flask import Flask, jsonify, render_template, request
-from vercel_ect_api import VercelEdgeConfig
+
+# 条件导入
+try:
+    from vercel_ect_api import VercelEdgeConfig
+except ImportError:
+    from api.vercel_ect_api import VercelEdgeConfig
 
 app = Flask(__name__)
 edge_config = VercelEdgeConfig()
@@ -75,5 +80,5 @@ def get_ip_parse():
     return jsonify({"ip": response["ip"], "city": response["city"], "addr": response["addr"]})
 
 
-# if __name__ == "__main__":
-#     app.run(host="127.0.0.1", port=5001, debug=True)
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=5001, debug=True)
