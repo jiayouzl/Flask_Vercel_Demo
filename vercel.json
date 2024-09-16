@@ -15,7 +15,8 @@
         }
     ],
     "env": {
-        "ECHOTEST": "ABCD0571",
-        "PYTHONPATH": "api"
+        "PYTHON_VERSION": "3.9",
+        "PYTHONPATH": "api",
+        "ECHOTEST": "ABCD0571"
     }
 }
