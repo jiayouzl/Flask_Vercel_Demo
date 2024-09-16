@@ -5,11 +5,7 @@ import os
 
 import requests
 from flask import Flask, jsonify, render_template, request
-
-try:
-    from vercel_ect_api import VercelEdgeConfig
-except ImportError:
-    from api.vercel_ect_api import VercelEdgeConfig
+from vercel_ect_api import VercelEdgeConfig
 
 app = Flask(__name__)
 edge_config = VercelEdgeConfig()

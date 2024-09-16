@@ -15,6 +15,7 @@
         }
     ],
     "env": {
-        "ECHOTEST": "ABCD0571"
+        "ECHOTEST": "ABCD0571",
+        "PYTHONPATH": "./api"
     }
 }
